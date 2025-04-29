@@ -14,7 +14,20 @@ A complete Retrieval-Augmented Generation (RAG) system, plus an OCR-to-Markdown 
   - [2. OCR to Markdown & Image Q&A](#2-ocr-to-markdown---image-qa)  
 - [Project Structure](#project-structure)  
 - [Contributing](#contributing)  
-- [License](#license)  
+- [License](#license)
+
+## Project Structure 
+```
+.
+├── RAG.py                 # Agentic RAG & BM25 Search Streamlit app
+├── ocr_processor.py       # OCR → Markdown & Image Q&A Streamlit app
+├── utils/
+│   └── custom_converters.py  # Docx/.xlsx → Haystack Document converters
+├── chat_history.db        # SQLite DB (auto-generated)
+├── LICENSE                # MIT License
+└── .gitignore
+
+```
 
 ## Features
 
