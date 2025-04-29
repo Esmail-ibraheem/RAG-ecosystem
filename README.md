@@ -14,20 +14,7 @@ A complete Retrieval-Augmented Generation (RAG) system, plus an OCR-to-Markdown 
   - [2. OCR to Markdown & Image Q&A](#2-ocr-to-markdown---image-qa)  
 - [Project Structure](#project-structure)  
 - [Contributing](#contributing)  
-- [License](#license)
-
-## Project Structure 
-```
-.
-├── RAG.py                 # Agentic RAG & BM25 Search Streamlit app
-├── ocr_processor.py       # OCR → Markdown & Image Q&A Streamlit app
-├── utils/
-│   └── custom_converters.py  # Docx/.xlsx → Haystack Document converters
-├── chat_history.db        # SQLite DB (auto-generated)
-├── LICENSE                # MIT License
-└── .gitignore
-
-```
+- [License](#license)  
 
 ## Features
 
@@ -60,20 +47,100 @@ A complete Retrieval-Augmented Generation (RAG) system, plus an OCR-to-Markdown 
    ```bash
    git clone https://github.com/Esmail-ibraheem/RAG-ecosystem.git
    cd RAG-ecosystem
-   
-2. **Create & activate a virtual environment**
-```bash
-  python3 -m venv .venv
-  source .venv/bin/activate    # macOS/Linux
-  .venv\Scripts\activate       # Windows
-```
-3. Install dependencies
-```bash
+   ```
+
+2. **Create & activate a virtual environment**  
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate    # macOS/Linux
+   .venv\Scripts\activate       # Windows
+   ```
+
+3. **Install dependencies**  
+   ```bash
    pip install streamlit
-pip install "haystack[all]"   # Core RAG components
-pip install openai sqlalchemy pandas python-docx pillow requests python-dotenv
+   pip install "haystack[all]"   # Core RAG components
+   pip install openai sqlalchemy pandas python-docx pillow requests python-dotenv
+   ```
+
+### Configuration
+
+Create a `.env` file in the project root with your API keys:
+
+```dotenv
+OPENAI_API_KEY=sk-…
+TOGETHER_API_KEY=sk-…
 ```
 
+Or set them in your shell:
 
+```bash
+export OPENAI_API_KEY=sk-…
+export TOGETHER_API_KEY=sk-…
+```
 
+## Usage
 
+### 1. Agentic RAG Chat & BM25 Search
+
+Launch the main RAG app:
+
+```bash
+streamlit run RAG.py
+```
+
+- **Sidebar**  
+  - Enter your OpenAI API key.  
+  - Pick a GPT model (e.g. `gpt-3.5-turbo` or `gpt-4-turbo`).  
+  - Upload documents (`.pdf`, `.docx`, `.txt`, `.csv`, `.xlsx`) for RAG or BM25.  
+  - Start or load chat sessions.
+
+- **Main panel**  
+  - For “RAG Chat”: chat with the system—behind the scenes it chooses between summary, context-driven answer, or simple reply.  
+  - For “BM25 Search”: run keyword searches and preview top‐k results.
+
+All chat history is stored in `chat_history.db` (SQLite) for later reuse.
+
+### 2. OCR to Markdown & Image Q&A
+
+Run the OCR & QA utility:
+
+```bash
+streamlit run ocr_processor.py
+```
+
+- **Convert to Markdown**  
+  - Upload or URL-point to an image.  
+  - Click **Convert to Markdown** to get full‐page Markdown.  
+
+- **Ask About the Image**  
+  - Enter a natural-language question.  
+  - Click **Get Answer** to see the model’s response.
+
+## Project Structure
+
+```
+.
+├── RAG.py                 # Agentic RAG & BM25 Search Streamlit app
+├── ocr_processor.py       # OCR → Markdown & Image Q&A Streamlit app
+├── utils/
+│   └── custom_converters.py  # Docx/.xlsx → Haystack Document converters
+├── chat_history.db        # SQLite DB (auto-generated)
+├── LICENSE                # MIT License
+└── .gitignore
+```
+
+## Contributing
+
+1. Fork the repo  
+2. Create a feature branch (`git checkout -b feat/my-feature`)  
+3. Commit your changes (`git commit -m "Add …"`)  
+4. Push to your branch (`git push`)  
+5. Open a Pull Request!
+
+Please follow the existing code style and include tests/examples where applicable.
+
+## License
+
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.  
+```
