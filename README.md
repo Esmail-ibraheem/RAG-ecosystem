@@ -60,3 +60,20 @@ A complete Retrieval-Augmented Generation (RAG) system, plus an OCR-to-Markdown 
    ```bash
    git clone https://github.com/Esmail-ibraheem/RAG-ecosystem.git
    cd RAG-ecosystem
+   
+2. **Create & activate a virtual environment**
+```bash
+  python3 -m venv .venv
+  source .venv/bin/activate    # macOS/Linux
+  .venv\Scripts\activate       # Windows
+```
+3. Install dependencies
+```bash
+   pip install streamlit
+pip install "haystack[all]"   # Core RAG components
+pip install openai sqlalchemy pandas python-docx pillow requests python-dotenv
+```
+
+
+
+
