@@ -1,4 +1,4 @@
-import streamlit as st 
+import streamlit as st  
 from haystack import Pipeline
 from haystack.document_stores.in_memory import InMemoryDocumentStore
 from haystack.components.converters import PyPDFToDocument
