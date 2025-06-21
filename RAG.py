@@ -5,7 +5,7 @@ from haystack.components.converters import PyPDFToDocument
 from haystack.components.converters.txt import TextFileToDocument
 from haystack.components.preprocessors import DocumentCleaner, DocumentSplitter
 from haystack.components.writers import DocumentWriter
-from haystack.components.embedders import OpenAIDocumentEmbedder, OpenAITextEmbedder
+from haystack.components.embedders import OpenAIDocumentEmbedder, OpenAITextEmbedder 
 from haystack.components.joiners import DocumentJoiner
 from haystack.utils import Secret
 from pathlib import Path
